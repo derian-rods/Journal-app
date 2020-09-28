@@ -1,9 +1,14 @@
 import { types } from "../types/types";
 import {firebase, googleAuthProvider} from '../firebase/firebaseConfig'
+import { finishLoading, startLoading } from "./ui";
+import Swal from 'sweetalert2'
 
 /* Auth Actions */
 export const startLoginEmailPassaword = (email, password) =>{
     return async (dispatch) =>{
+
+        dispatch(startLoading());
+
         try {
             const {user} =  await firebase.auth().signInWithEmailAndPassword(email, password);
             const userCred = {
@@ -11,15 +16,21 @@ export const startLoginEmailPassaword = (email, password) =>{
                 userName: user.displayName,
             }
             dispatch(login(userCred))
+            dispatch(finishLoading())
         } catch (error) {
-            console.error(`${error.code} : ${error.message}`)            
-
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+              });
+            dispatch(finishLoading());
         }
     }
 }
 
 export const startRegisterWithEmailPasswordName = (email, password, name) => {
     return async (dispatch) => {
+        dispatch(startLoading());
      try {
         const {user} = await firebase.auth().createUserWithEmailAndPassword(email, password);
         await user.updateProfile({displayName: name}) 
@@ -28,8 +39,14 @@ export const startRegisterWithEmailPasswordName = (email, password, name) => {
             userName: user.displayName,
         }
         dispatch(login(userCred))
+        dispatch(finishLoading())
      } catch (error) {
-        console.error(`${error.code} : ${error.message}`)            
+        dispatch(finishLoading())
+        Swal.fire({
+            title: 'Error!',
+            text: error.message,
+            icon: 'error',
+          });            
      }
     }
 }
@@ -47,7 +64,11 @@ export const startLoginGoogle = () =>{
             } 
             dispatch(login(userCred));
         } catch (error) {
-            console.error(`${error.code} : ${error.message}`)            
+            Swal.fire({
+                title: 'Error!',
+                text: error.message,
+                icon: 'error',
+              });
         }
     }
 }
@@ -59,4 +80,15 @@ export const login = (uid, userName, userPhoto) => ({
             userName,
             userPhoto
         }
+}); 
+
+export const startLogout = () => {
+    return async (dispatch) => {
+        await firebase.auth().signOut()
+        dispatch(logout())
+    }
+}
+
+const logout = () => ({
+    type: types.logout
 })

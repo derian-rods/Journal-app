@@ -8,8 +8,9 @@ import { startRegisterWithEmailPasswordName } from '../../actions/auth';
 
 export const RegisterScreen = () => {
 
+
     const dispatch = useDispatch()
-    const {msgError} = useSelector( state => state.ui);
+    const {msgError, loading} = useSelector( state => state.ui);
     console.log(msgError)
 
     const [value, handleInputChange  ] = useForm({
@@ -95,7 +96,7 @@ export const RegisterScreen = () => {
                 value={password2}
                 onChange={handleInputChange}
             />
-            <button  type='submit' className="btn btn-primary btn-block mb-5" >
+            <button  type='submit' className="btn btn-primary btn-block mb-5" disabled={loading} >
                 Register
             </button>
             <Link to='/auth/login' className="link">

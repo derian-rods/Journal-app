@@ -1,0 +1,17 @@
+.loading__screen{
+    align-items: center;
+    background-color: $primary;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    width: 100vw;
+}
+
+.loading__screen-container{
+    padding: 2em;
+    width: 50em;
+}
+#logo{
+    width: 100%;
+    animation: flipin 2.5s linear infinite;
+}

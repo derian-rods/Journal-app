@@ -1,8 +1,16 @@
 import React from 'react'
+import { useDispatch } from 'react-redux'
+import { startLogout } from '../../actions/auth'
 import { JournalEntries } from '../JournalEntries'
 
 export const Sidebar = ({active, handleDrawer}) => {
 
+
+
+    const dispatch = useDispatch()
+    const handleLogout = () => {
+        dispatch(startLogout())
+    }
 
     return (   
         <>
@@ -15,7 +23,7 @@ export const Sidebar = ({active, handleDrawer}) => {
                     <i className='far fa-moon'></i>
                     <span> Derian</span>
                 </h3>
-                <button className="mt-5 btn btn__logout">
+                <button className="mt-5 btn btn__logout" onClick={handleLogout}>
                     Logout
                 </button>
             </div>
