@@ -1,20 +1,25 @@
-import React, {useState} from 'react'
-// import { NothingSelected } from '../../components/NothingSelected'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { NothingSelected } from '../../components/NothingSelected'
 import {Sidebar} from '../../components/Sidebar'
 import { NotesScreen } from '../NotesScreen'
 
 
 export const JournalScreen = () => {
-    const [show, setshow] = useState(false)
-    const handleDrawer = () => {
-        setshow(!show)
-    }
+
+
+    const {active} = useSelector(state => state.note)
+
     return (
         <div className="journal__main-content">
-            <Sidebar  active={show} handleDrawer= {handleDrawer}/>
+            <Sidebar />
             <main>
-                {/* <NothingSelected />  */}
-                <NotesScreen />
+                {
+                    active ?  <NotesScreen />
+                    :
+                    <NothingSelected /> 
+                 }
+               
             </main>
         </div>
     )

@@ -2,7 +2,10 @@ import {types} from '../types/types'
 
 const initialState = {
     loading: false,
-    msgError: null
+    msgError: null,
+    screenWidth: window.screen.width,
+    drawer: null,
+    dropMenu: true
 }
 
 export const uiReducer = (state= initialState, action) => {
@@ -34,8 +37,25 @@ export const uiReducer = (state= initialState, action) => {
               ...state,
               loading: false
             }
-
+          case types.uiControlDrawer:
+            return{
+              ...state,
+              drawer: action.payload
+            }
+          case types.uiSetWidthScreen:
+            return{
+              ...state,
+              screenWidth: action.payload
+            }
+          case types.uiControlDropMenu:
+          return{
+            ...state,
+            dropMenu: action.payload
+          }
         default:
-            return initialState
+            return {
+              ...state,
+              dropMenu: true
+            }
     }
 }

@@ -12,25 +12,31 @@ import { login } from '../actions/auth';
 import { LoadingScreen } from '../screen/LoadingScreen';
 import { PrivateRoute } from './PrivateRoute';
 import { PublicRoute } from './PublicRoute';
+import { loadNotes } from '../helpers/loadNotes';
+import { setNotes } from '../actions/notes';
+import { setWidthScreen } from '../actions/ui';
 
 export const AppRouter = () => {
     
-    const  dispatch = useDispatch()
+    const  dispatch = useDispatch();
   
     const [cheacking, setcheacking] = useState(true);
-    const [isLoggedin, setisLoggedin] = useState(false)
-    useEffect(() => {
-        firebase.auth().onAuthStateChanged( user => {
+    const [isLoggedin, setisLoggedin] = useState(false);
+    useEffect (() => {
+        firebase.auth().onAuthStateChanged(async user => {
             if(user?.uid){
                 dispatch(login(user.uid, user.displayName, user.photoURL));
                 setisLoggedin(true);
+              const notes = await loadNotes(user.uid)
+              dispatch(setNotes(notes))
+              dispatch(setWidthScreen());
             }else{
                 setisLoggedin(false);
             }
             setcheacking(false)
                 
         })
-   }, [dispatch, setcheacking, setisLoggedin])
+   }, [dispatch, setcheacking, setisLoggedin,])
    if(cheacking){
        return(
            <LoadingScreen />

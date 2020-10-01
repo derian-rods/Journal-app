@@ -10,7 +10,7 @@
         outline: none;
     }
     &:hover{
-        color: #9193be;
+        color: rgb(185, 185, 185);
     }
 }
 .btn-primary{
@@ -66,5 +66,18 @@
     }
     &:active {
         background: $button-active-blue;
+    }
+}
+
+.btn-danger{
+    color: red;
+    border-radius: 2px;
+    &:disabled{
+        background-color: lighten($color: red, $amount: 15);
+    }
+    &:hover{
+        background-color: darken($color: red, $amount: 15);
+        color: white;
+        box-shadow: 0 0 6px $primary;
     }
 }

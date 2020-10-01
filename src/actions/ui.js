@@ -17,3 +17,18 @@ export const startLoading = () => ({
 export const finishLoading = () => ({
     type: types.uifinishLoading
 })
+
+export const controlDrawer = (drawer) => ({
+    type: types.uiControlDrawer,
+    payload: !drawer
+})
+
+export const setWidthScreen = () =>({
+    type: types.uiSetWidthScreen,
+    payload: window.screen.width
+})
+
+export const controlDropMenu = (dropMenu) =>({
+    type: types.uiControlDropMenu,
+    payload: !dropMenu
+})

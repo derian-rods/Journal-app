@@ -27,9 +27,7 @@ export const LoginScreen = () => {
     }
 
     const handleGoogleLogin = () =>{
-        if(isFormValio()){
-            dispatch(startLoginGoogle())
-        }
+            dispatch(startLoginGoogle()) 
     }
 
     const isFormValio  = () => {
