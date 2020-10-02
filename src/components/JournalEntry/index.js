@@ -10,7 +10,7 @@ export const JournalEntry = ({id, date, title, body, url}) => {
     const dispatch = useDispatch();
     const {screenWidth} = useSelector(state => state.ui)
     const hiddenDrawer = () => {
-        (screenWidth <= 486)&& dispatch(controlDrawer(false))
+        (screenWidth <= 768)&& dispatch(controlDrawer(false))
     }   
     const handleShowEntries = () => {
 

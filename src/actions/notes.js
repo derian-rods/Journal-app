@@ -104,7 +104,7 @@ export const startDeleting = (id) => {
 
         await db.doc(`${uid}/journal/notes/${id}`).delete();
         dispatch(deleteNote(id));
-        Swal.fire('Deleting', 'Please wait...', 'error')
+        Swal.fire('Deleting', 'error')
     }
 }
 

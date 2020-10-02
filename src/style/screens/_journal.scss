@@ -17,6 +17,9 @@
 .journal__sidebar-button{
     display: none;
 }
+.fa-save{
+    width: 20px;
+}
 .journal__sidebar-close{
     display: none;
 }
@@ -118,6 +121,41 @@
 }
 
 @media screen and (max-width:363px){
+    .journal__sidebar{
+        background-color: $dark-grey;
+        color: $white;
+        display: flex;
+        flex-direction: column;
+        height: 100vh;
+        padding-left: 10px;
+        padding-right: 10px;
+        position: absolute;
+        max-width: 19em;
+        z-index: 1000;
+    }
+    .journal__sidebar-button{
+        right:1em;
+        font-size: x-large;
+        bottom: 1em;
+        display: flex;
+        position: absolute;
+    }
+    .journal__sidebar-close{
+        align-items: center;
+        background: $primary;
+        border-top-right-radius: 20px;
+        border-bottom-right-radius: 20px;
+        color: white;
+        justify-content: center;
+        left: 20.2em;
+        height: 2em;
+        display: flex;
+        position: absolute;
+        top: 50%;
+        width: 1.5em;
+    }
+}
+@media screen and (max-width:768px){
     .journal__sidebar{
         background-color: $dark-grey;
         color: $white;
