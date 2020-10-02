@@ -71,7 +71,7 @@ export const RegisterScreen = () => {
             />
             <input 
                 type='text'
-                placeholder='Email'
+                placeholder='E-mail'
                 name='email'
                 className='auth__input mb-1'
                 autoComplete='off'
