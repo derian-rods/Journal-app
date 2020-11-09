@@ -11,7 +11,6 @@ export const RegisterScreen = () => {
 
     const dispatch = useDispatch()
     const {msgError, loading} = useSelector( state => state.ui);
-    console.log(msgError)
 
     const [value, handleInputChange  ] = useForm({
         name:'',
@@ -71,7 +70,7 @@ export const RegisterScreen = () => {
             />
             <input 
                 type='text'
-                placeholder='E-mail'
+                placeholder='Email'
                 name='email'
                 className='auth__input mb-1'
                 autoComplete='off'
@@ -90,7 +89,7 @@ export const RegisterScreen = () => {
             />
             <input 
                 type='password'
-                placeholder='Confirm passaword'
+                placeholder='Confirm password'
                 name='password2'
                 className='auth__input mb-1'
                 value={password2}

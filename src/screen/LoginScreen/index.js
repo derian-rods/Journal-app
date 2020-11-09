@@ -60,7 +60,7 @@ export const LoginScreen = () => {
             }
                 <input 
                     type='text'
-                    placeholder='E-mail'
+                    placeholder='Email'
                     name='email'
                     className='auth__input'
                     autoComplete='off'
@@ -69,7 +69,7 @@ export const LoginScreen = () => {
                 />
                 <input 
                     type='password'
-                    placeholder='Passaword'
+                    placeholder='Password'
                     name='password'
                     className='auth__input'
                     onChange={handleInputChange}

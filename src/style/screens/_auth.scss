@@ -8,6 +8,7 @@
    width: 100vw;
 }
 .auth__box-container{
+    animation: fadein 1s ease-in;
     background-color: $white;
     box-shadow:  0 3px $dark-grey;
     border-radius: 2px;
